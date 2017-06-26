@@ -1,24 +1,24 @@
 var Sequelize = require('sequelize');
-var db = new Sequelize('postgres://localhost:5432/tessel');
+var db = new Sequelize('postgres://localhost:5432/tessel', {logging: false});
 
 const Fellow = db.define('fellow', {
     first_name: {
-        type: Sequelize.String,
+        type: Sequelize.STRING,
         allowNull: false
     },
     last_name: {
-        type: Sequelize.String,
+        type: Sequelize.STRING,
         allowNull: false
     }
 });
 
 const Student = db.define('student', {
     first_name: {
-        type: Sequelize.String,
+        type: Sequelize.STRING,
         allowNull: false
     },
     last_name: {
-        type: Sequelize.String,
+        type: Sequelize.STRING,
         allowNull: false
     }
 });
@@ -33,7 +33,6 @@ const AttendanceDate = db.define('attendanceDate', {
 
 Student.belongsTo(Fellow);
 Fellow.hasMany(Student);
-Student.belongsTo(Attendance);
 AttendanceDate.belongsToMany(Student, {through: Attendance});
 
 
