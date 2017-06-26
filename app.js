@@ -1,15 +1,17 @@
 var express = require('express');
 var app = express();
-var Promise = require('bluebird')
-
 var nunjucks = require('nunjucks');
+
 
 var {db, Student, Attendance, Date, Fellow} = require('./models');
 
 
-nunjucks.configure('views', {
-    express: app
-});
+
+nunjucks.configure('views', {noCache: true});
+app.set('view engine', 'html');
+app.engine('html', nunjucks.render);
+
+var Promise = require('bluebird')
 
 
 app.get('/', (req, res) => {
