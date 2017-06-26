@@ -1,5 +1,5 @@
 var Sequelize = require('sequelize');
-var db = new Sequelize('postgres://localhost:5432/tessel');
+var db = new Sequelize('postgres://localhost:5432/tessel', {logging: false});
 
 const Fellow = db.define('fellow', {
     first_name: {
@@ -33,8 +33,8 @@ const AttendanceDate = db.define('attendanceDate', {
 
 Student.belongsTo(Fellow);
 Fellow.hasMany(Student);
-Student.belongsTo(Attendance);
-//AttendanceDate.belongsToMany(Student, {through: Attendance});
+AttendanceDate.belongsToMany(Student, {through: Attendance});
+
 
 
 
