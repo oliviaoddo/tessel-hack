@@ -1,18 +1,32 @@
 var express = require('express');
 var app = express();
-var Promise = require('bluebird')
-
 var nunjucks = require('nunjucks');
 
 
+var {db, Student, Attendance, Date, Fellow} = require('./models');
+
+
+
+nunjucks.configure('views', {noCache: true});
+app.set('view engine', 'html');
+app.engine('html', nunjucks.render);
+
+var Promise = require('bluebird')
+
+
 app.get('/', (req, res) => {
-  // find all students, include fellows
-  // render into template
+  var studentProm = Student.findAll();
+  var fellowProm = Fellow.findAll();
+
+  Promise.all([studentProm, fellowProm])
+  .spread((studentData, fellowData) => {
+    res.render('index', {fellows: fellowData, students: studentData});
+  });
+
 })
 
 app.get('/:id', (req, res) => {
   // check if user with id has logged in, if not log them in
-  var student;
 
   var studentProm = Student.findById(req.params.id);
 

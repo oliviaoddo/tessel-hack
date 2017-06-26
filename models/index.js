@@ -37,6 +37,7 @@ AttendanceDate.belongsToMany(Student, {through: Attendance});
 
 
 
+
 module.exports = {
     db: db,
     Fellow: Fellow,
