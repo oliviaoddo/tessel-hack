@@ -21,6 +21,19 @@ const Student = db.define('student', {
         type: Sequelize.STRING,
         allowNull: false
     }
+}, {
+    instanceMethods: {
+        isHere: function(){
+            Attendance.findOne({where: { studentId: this.id,attendanceDateId: new Date().toJSON().slice(0,10)}})
+            .then(function(ishere){
+                if(ishere) return true;
+                else return false;
+            })
+            .catch((err)=>{
+                console.log(err);
+            })
+        }
+    }
 });
 
 const Attendance = db.define('attendance', {
