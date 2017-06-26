@@ -20,11 +20,15 @@ const Student = db.define('student', {
     last_name: {
         type: Sequelize.STRING,
         allowNull: false
+    },
+    id: {
+        type: Sequelize.STRING,
+        primaryKey: true
     }
 }, {
-    instanceMethods: {
-        isHere: function(){
-            Attendance.findOne({where: { studentId: this.id,attendanceDateId: new Date().toJSON().slice(0,10)}})
+    getterMethods: {
+        isHere: function(instance){
+            Attendance.findOne({where: { studentId: instance.id, attendanceDateId: new Date().toJSON().slice(0,10)}})
             .then(function(ishere){
                 if(ishere) return true;
                 else return false;

@@ -12,11 +12,11 @@ var data = {
         {first_name: 'Gabriel', last_name: 'Rowe'}
     ],
     students: [
-        {first_name: 'Olivia', last_name: 'Oddo', fellowId: 1},
-        {first_name: 'Matt', last_name: 'Snow', fellowId: 2},
-        {first_name: 'Nancy', last_name: 'Velasquez', fellowId: 3},
-        {first_name: 'Ken', last_name: 'Russo', fellowId: 4},
-        {first_name: 'Dan', last_name: 'Boufford', fellowId: 5}
+        {first_name: 'Olivia', last_name: 'Oddo', fellowId: 1, id: "3ca5a500"},
+        {first_name: 'Matt', last_name: 'Snow', fellowId: 2, id: "22"},
+        {first_name: 'Nancy', last_name: 'Velasquez', fellowId: 3, id: "17"},
+        {first_name: 'Ken', last_name: 'Russo', fellowId: 4, id: "9"},
+        {first_name: 'Dan', last_name: 'Boufford', fellowId: 5, id: "04683452de2380"}
     ],
     dates: [
         {date: new Date().toJSON().slice(0,10)}

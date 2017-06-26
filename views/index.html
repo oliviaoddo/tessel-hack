@@ -1,18 +1,18 @@
 {% extends "layout.html" %}
-
+{% block content %}
 	{% for fellow in fellows %}
-		<h3> {{ fellow.name }}</h3>
-		<ol>
+		<h3> {{ fellow.first_name }}</h3>
+		<ul>
 			{% for student in students %}
 			{% if (student.fellowId === fellow.id) %}
-			<li>{{ student.name }}
-			{% if (student.isHere) %}
+			<li>{{ student.first_name }} {{ student.last_name }}
+			{{student.isHere}}
 			- Here
-			{% endif %}
+		
 			</li>
 			{% endif %}
-			<% endfor %>
-		</ol>
+			{% endfor %}
+		</ul>
 	{% endfor %}
 
 {% endblock %}
