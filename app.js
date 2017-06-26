@@ -1,9 +1,12 @@
 var express = require('express');
 var app = express();
-var Promise = require('bluebird')
-
 var nunjucks = require('nunjucks');
 
+var env = nunjucks.configure('views', {noCache: true});
+app.set('view engine', 'html');
+app.engine('html', nunjucks.render);
+
+var Promise = require('bluebird')
 
 app.get('/', (req, res) => {
   // find all students, include fellows
